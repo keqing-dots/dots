@@ -1,0 +1,21 @@
+format = """
+$time $directory
+[Come on. Enough procrastinating. Let's go.](#FDD017)
+$character
+"""
+
+add_newline = false
+
+[time]
+disabled = false
+format = "[$time](#9A60D4)"
+time_format = "%d-%m-%Y %H:%M:%S"
+
+[directory]
+format = "[$path](white)"
+truncation_length = 1
+truncate_to_repo = false
+
+[character]
+success_symbol = "[>](white)"
+error_symbol = "[>](white)"

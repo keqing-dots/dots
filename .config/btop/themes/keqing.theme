@@ -1,0 +1,81 @@
+# Theme: keqing
+# By: Assistant
+
+# Main bg (Deep indigo/purple from her outfit)
+theme[main_bg]="#141021"
+
+# Main text color (Soft lavender-tinted white)
+theme[main_fg]="#dcd1e6"
+
+# Title color for boxes (Bright Electro purple)
+theme[title]="#c89dff"
+
+# Highlight color for keyboard shortcuts (Gold from her hairpin/dress accents)
+theme[hi_fg]="#ebd373"
+
+# Background color of selected item in processes box (Mid-toned royal purple)
+theme[selected_bg]="#432c6b"
+
+# Foreground color of selected item in processes box (Pure white)
+theme[selected_fg]="#ffffff"
+
+# Color of inactive/disabled text (Muted purple-grey)
+theme[inactive_fg]="#5d4c7a"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text (Teal from her Vision/gems)
+theme[proc_misc]="#54ebd6"
+
+# Cpu box outline color
+theme[cpu_box]="#5d4c7a"
+
+# Memory/disks box outline color
+theme[mem_box]="#5d4c7a"
+
+# Net up/down box outline color
+theme[net_box]="#5d4c7a"
+
+# Processes box outline color
+theme[proc_box]="#5d4c7a"
+
+# Box divider line and small boxes line color
+theme[div_line]="#5d4c7a"
+
+# Temperature graph colors (Teal -> Electro Purple -> Gold)
+theme[temp_start]="#54ebd6"
+theme[temp_mid]="#c89dff"
+theme[temp_end]="#ebd373"
+
+# CPU graph colors
+theme[cpu_start]="#54ebd6"
+theme[cpu_mid]="#c89dff"
+theme[cpu_end]="#ebd373"
+
+# Mem/Disk free meter
+theme[free_start]="#54ebd6"
+theme[free_mid]="#c89dff"
+theme[free_end]="#ebd373"
+
+# Mem/Disk cached meter
+theme[cached_start]="#54ebd6"
+theme[cached_mid]="#c89dff"
+theme[cached_end]="#ebd373"
+
+# Mem/Disk available meter
+theme[available_start]="#54ebd6"
+theme[available_mid]="#c89dff"
+theme[available_end]="#ebd373"
+
+# Mem/Disk used meter
+theme[used_start]="#54ebd6"
+theme[used_mid]="#c89dff"
+theme[used_end]="#ebd373"
+
+# Download graph colors
+theme[download_start]="#54ebd6"
+theme[download_mid]="#c89dff"
+theme[download_end]="#ebd373"
+
+# Upload graph colors
+theme[upload_start]="#54ebd6"
+theme[upload_mid]="#c89dff"
+theme[upload_end]="#ebd373"
