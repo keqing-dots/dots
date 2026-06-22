@@ -45,8 +45,8 @@ clear() { command clear 2>/dev/null || printf '\033[H\033[2J\033[3J'; greet; }
 # 5. DEVELOPMENT TOOLS
 clearpycache() { find . -type d -name "__pycache__" -exec rm -rf {} +; }
 
-own-code() {
-  sudo chown -R $USER /opt/vscodium-bin/resources/app/out
+own() {
+  sudo chown -R $USER $1
 }
 
 run() {

@@ -29,7 +29,7 @@ V.wpm = 10
 V.terminal = "kitty"
 V.browser = "zen-browser"
 V.browser_private = "zen-browser --private"
-V.editor = "codium"
+V.editor = "code"
 V.filemanager = V.terminal .. " yazi"
 V.screenshot = "bash -c 'mkdir -p $HOME/Pictures/screenshots/ && hyprshot -m region -o $HOME/Pictures/screenshots/'"
 
