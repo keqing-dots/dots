@@ -15,7 +15,7 @@ desc = "Toggle current panel"
 
 [[mgr.prepend_keymap]]
 on = "<A-c>"
-run = "shell 'vscodium .' --orphan"
+run = "shell 'code .' --orphan"
 desk = "Open current directory in VS Code"
 
 [[mgr.prepend_keymap]]
