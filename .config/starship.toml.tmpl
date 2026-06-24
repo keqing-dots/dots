@@ -1,6 +1,6 @@
 format = """
 $time $directory
-[Come on. Enough procrastinating. Let's go.](#FDD017)
+[Come on. Enough procrastinating. Let's go.]({{ACCENT_ALT}})
 $character
 """
 
@@ -8,14 +8,14 @@ add_newline = false
 
 [time]
 disabled = false
-format = "[$time](#9A60D4)"
+format = "[$time]({{ACCENT}})"
 time_format = "%d-%m-%Y %H:%M:%S"
 
 [directory]
-format = "[$path](white)"
+format = "[$path]({{TEXT}})"
 truncation_length = 1
 truncate_to_repo = false
 
 [character]
-success_symbol = "[>](white)"
-error_symbol = "[>](white)"
+success_symbol = "[>]({{TEXT}})"
+error_symbol = "[>]({{TEXT}})"
