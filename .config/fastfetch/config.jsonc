@@ -32,6 +32,11 @@
       "key": "╭───────────────────────────────────╮"
     },
     {
+      "type": "host",
+      "key": "│ host",
+      "format": "{$1}{>20}{$4} │"
+    },
+    {
       "type": "command",
       "key": "│ mem",
       "text": "free -m | awk 'NR==2{printf \"%.2f GiB / %.2f GiB\", $3/1024, $2/1024}'",
