@@ -59,16 +59,20 @@ autologin-log() { validate bat && bat /tmp/login-$UID.log; }
 
 cleanlinks() {
   local dirs=(/usr/bin /usr/local/bin)
-  local total=0
+  local all_broken=()
   for dir in $dirs; do
     local broken=($(find "$dir" -maxdepth 1 -xtype l 2>/dev/null))
     (( ${#broken[@]} == 0 )) && continue
-    echo "Removing ${#broken[@]} broken symlink(s) in $dir:"
+    echo "$dir:"
     printf '  %s\n' "${broken[@]##*/}"
-    sudo find "$dir" -maxdepth 1 -xtype l -delete
-    (( total += ${#broken[@]} ))
+    all_broken+=("${broken[@]}")
   done
-  (( total == 0 )) && echo "No broken symlinks found." || echo "\nDone. Removed $total broken symlink(s)."
+  (( ${#all_broken[@]} == 0 )) && { echo "No broken symlinks found."; return; }
+  echo "\nFound ${#all_broken[@]} broken symlink(s). Remove? [y/N] "
+  read -r reply
+  [[ "$reply" =~ ^[Yy]$ ]] || { echo "Aborted."; return; }
+  sudo rm -- "${all_broken[@]}"
+  echo "Done. Removed ${#all_broken[@]} broken symlink(s)."
 }
 
 # 7. ALIASES
