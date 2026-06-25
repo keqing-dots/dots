@@ -57,6 +57,20 @@ run() {
 
 autologin-log() { validate bat && bat /tmp/login-$UID.log; }
 
+cleanlinks() {
+  local dirs=(/usr/bin /usr/local/bin)
+  local total=0
+  for dir in $dirs; do
+    local broken=($(find "$dir" -maxdepth 1 -xtype l 2>/dev/null))
+    (( ${#broken[@]} == 0 )) && continue
+    echo "Removing ${#broken[@]} broken symlink(s) in $dir:"
+    printf '  %s\n' "${broken[@]##*/}"
+    sudo find "$dir" -maxdepth 1 -xtype l -delete
+    (( total += ${#broken[@]} ))
+  done
+  (( total == 0 )) && echo "No broken symlinks found." || echo "\nDone. Removed $total broken symlink(s)."
+}
+
 # 7. ALIASES
 alias grep="grep --color=auto"
 alias ls="ls --color=auto"
