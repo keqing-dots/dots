@@ -26,7 +26,7 @@ sudoc() { local r="$1"; shift; [[ "$r" == "/" ]] && sudo "$@" || "$@"; }
 update_stow() {
     [[ "$2" -eq 0 ]] || die "stow: --remove not supported"
     local T="${STOW_TARGET:-$HOME}" M="${STOW_MODE:-stow}" LOG="/tmp/stow-dry.out"
-    local IGN=(--ignore='^(?!\.config(/|$)|\.zshrc$).*')
+    local IGN=(--ignore='^(?!\.config(/|$)|\.zshrc$|\.gtkrc-2\.0$).*')
     [[ "$M" =~ ^(stow|restow)$ ]] || die "invalid STOW_MODE: $M"
     req_cmd stow; req_dir "$R"; cd "$R"
 
