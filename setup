@@ -129,7 +129,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # 6. update (skip: plymouth, sddm, grub)
 step "Running update modules"
-for mod in stow sudo font cursor desktop bin yazi splash; do
+for mod in stow sudo font cursor desktop bin vscode yazi splash; do
     echo "  -> update $mod"
     "$R/scripts/update" "$mod"
 done

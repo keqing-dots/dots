@@ -8,7 +8,7 @@ SD="$R/scripts"
 TD="$R/system/themes"
 AD="$R/system/applications"
 
-MODS=(bin cursor desktop font grub sudo yazi splash ramfs checkroot stow)
+MODS=(bin cursor desktop font grub sudo vscode yazi splash ramfs checkroot stow)
 
 BIN_IGNORE=()
 
@@ -83,6 +83,20 @@ update_font() {
     echo "FONT=comicshanns" | sudoc "$1" tee -a "$vconsole" >/dev/null
     [[ "$1" == "/" ]] && sudo systemctl restart systemd-vconsole-setup &>/dev/null || true
     update_ramfs "$1"
+}
+
+update_vscode() {
+    local found=0
+    while IFS= read -r -d '' out; do
+        echo "owning $out"
+        sudoc "$1" chown -R "$USER:$USER" "$out"
+        found=1
+    done < <(find \
+        "$(join_r "$1" /opt)" \
+        "$(join_r "$1" /usr/share)" \
+        "$(join_r "$1" /usr/lib)" \
+        -maxdepth 5 -type d -path '*/resources/app/out' -print0 2>/dev/null)
+    [[ "$found" -eq 1 ]] || echo "no vscode-based editors found"
 }
 
 update_ramfs() {
@@ -213,7 +227,7 @@ fi
 case "$mod" in
     checkroot) echo "$R" &>/dev/null && echo true || echo false ;;
     stow) update_stow "$TR" "$rm" ;;
-    sudo|font|cursor|ramfs) "update_$mod" "$TR" ;;
+    sudo|font|cursor|ramfs|vscode) "update_$mod" "$TR" ;;
     bin|desktop|yazi) "update_$mod" "$TR" "$rm" ;;
     splash) update_splash "$TR" ;;
     grub) update_grub "$TR" "$res" "$rm" ;;
