@@ -51,7 +51,7 @@ goto() {
 # 5. DEVELOPMENT TOOLS
 clearpycache() { find . -type d -name "__pycache__" -exec rm -rf {} +; }
 
-update_keqing() {
+update-keqing() {
   local repos=(dots shell)
   for repo in $repos; do
     echo "=> Updating keqing-$repo..."
