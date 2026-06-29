@@ -39,9 +39,10 @@ SYSTEM_PKGS=(
     stow
     syncthing
     upower
-    uwsm
     wireplumber
     wl-clipboard
+    xdg-desktop-portal
+    xdg-desktop-portal-hyprland
     xdg-utils
     zsh
 )

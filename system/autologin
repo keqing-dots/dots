@@ -39,7 +39,7 @@ command = "agreety --cmd $ZSH_PATH"
 user = "greeter"
 
 [initial_session]
-command = "uwsm start hyprland.desktop"
+command = "start-hyprland"
 user = "$TARGET_USER"
 EOF
 
