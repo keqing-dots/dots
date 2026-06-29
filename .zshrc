@@ -51,6 +51,20 @@ goto() {
 # 5. DEVELOPMENT TOOLS
 clearpycache() { find . -type d -name "__pycache__" -exec rm -rf {} +; }
 
+update_keqing() {
+  local repos=(dots shell)
+  for repo in $repos; do
+    echo "=> Updating keqing-$repo..."
+    if [[ -d ~/keqing-$repo ]]; then
+      git -C ~/keqing-$repo pull --rebase
+    else
+      echo "Error: ~/keqing-$repo does not exist."
+    fi
+    echo
+  done
+  echo "=> Update complete!"
+}
+
 own() {
   sudo chown -R $USER $1
 }
