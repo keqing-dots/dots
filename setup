@@ -69,7 +69,6 @@ EXTRA_PKGS=(
 
 AUR_PKGS=(
     bdf2psf
-    hellwal
     otf2bdf
     unimatrix-git
     visual-studio-code-bin
