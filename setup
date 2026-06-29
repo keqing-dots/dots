@@ -56,6 +56,7 @@ EXTRA_PKGS=(
     desktop-file-utils
     fastfetch
     fd
+    fzf
     hyprshot
     jq
     noto-fonts-cjk
