@@ -142,6 +142,7 @@ git clone https://github.com/keqing-dots/shell.git "$HOME/keqing-shell"
 
 step "Setting up keqing-shell"
 "$HOME/keqing-shell/setup"
+apply-colors
 
 # 8. Git
 step "Configuring git"
