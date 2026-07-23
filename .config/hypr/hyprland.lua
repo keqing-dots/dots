@@ -163,6 +163,7 @@ B.map_keybinds(nil, {
 	["SUPER + SHIFT + F"] = hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
 	["SUPER + SHIFT + K"] = B.exec(V.editor .. " keqing-dots"),
 	["SUPER + SHIFT + S"] = B.exec(V.screenshot),
+	["SUPER + SHIFT + V"] = B.exec(V.visualizer),
 	["SUPER + SHIFT + W"] = function() T.cw() end,
 	["SHIFT + SPACE"] = B.exec(V.launcher),
 	["SUPER + TAB"] = B.exec(V.overview),

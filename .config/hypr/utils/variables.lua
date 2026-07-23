@@ -28,5 +28,6 @@ V.lock = V.qs .. "lock"
 V.logout = V.qs .. "logout"
 V.overview = V.qs .. "overview"
 V.settings = V.qs .. "settings"
+V.visualizer = V.qs .. "visualizer"
 
 return V
