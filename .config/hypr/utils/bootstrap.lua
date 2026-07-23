@@ -48,6 +48,16 @@ function B.map_keybinds(opts, keys)
 	for k, v in pairs(keys) do hl.bind(k, v, opts) end
 end
 
+function B.mod(key, mods)
+	mods = mods or ""
+	local parts = { "SUPER" }
+	if mods:find("c") then table.insert(parts, "CTRL") end
+	if mods:find("a") then table.insert(parts, "ALT") end
+	if mods:find("s") then table.insert(parts, "SHIFT") end
+	table.insert(parts, key)
+	return table.concat(parts, " + ")
+end
+
 function B.set_monitor(mon, mode, pos, scale, rot)
 	hl.monitor({
 		output = mon or "",

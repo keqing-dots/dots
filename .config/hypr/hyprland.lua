@@ -150,64 +150,73 @@ hl.window_rule({ match = { class = "code-oss" }, opacity = "0.7" })
 -- ===========
 -- KEYBINDINGS
 -- ===========
+
+-- keqing-shell
 B.map_keybinds(nil, {
-	["SUPER + F"] = hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }),
-	["SUPER + I"] = B.exec(V.settings),
-	["SUPER + L"] = B.exec(V.lock),
-	["SUPER + P"] = hl.dsp.window.pseudo(),
-	["SUPER + Q"] = B.exec(V.logout),
-	["SUPER + V"] = hl.dsp.window.float({ action = "toggle" }),
-	["SUPER + ALT + K"] = B.exec(V.editor .. " keqing-shell"),
-	["SUPER + CTRL + SHIFT + W"] = function() T.cw("a") end,
-	["SUPER + SHIFT + C"] = B.exec(V.control),
-	["SUPER + SHIFT + F"] = hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
-	["SUPER + SHIFT + K"] = B.exec(V.editor .. " keqing-dots"),
-	["SUPER + SHIFT + S"] = B.exec(V.screenshot),
-	["SUPER + SHIFT + V"] = B.exec(V.visualizer),
-	["SUPER + SHIFT + W"] = function() T.cw() end,
+	[B.mod("C", "s")] = B.exec(V.control),
+	[B.mod("I")] = B.exec(V.settings),
+	[B.mod("L")] = B.exec(V.lock),
+	[B.mod("Q")] = B.exec(V.logout),
+	[B.mod("TAB")] = B.exec(V.overview),
+	[B.mod("V", "s")] = B.exec(V.visualizer),
 	["SHIFT + SPACE"] = B.exec(V.launcher),
-	["SUPER + TAB"] = B.exec(V.overview),
 })
 
+-- Window states
+B.map_keybinds(nil, {
+	[B.mod("F")] = hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }),
+	[B.mod("F", "s")] = hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
+	[B.mod("P")] = hl.dsp.window.pseudo(),
+	[B.mod("V")] = hl.dsp.window.float({ action = "toggle" }),
+})
+
+-- Apps
+B.map_keybinds(nil, {
+	[B.mod("B")] = B.exec(V.browser),
+	[B.mod("B", "s")] = B.exec(V.browser_private),
+	[B.mod("C")] = B.exec(V.editor),
+	[B.mod("E")] = B.exec(V.filemanager),
+	[B.mod("K", "a")] = B.exec(V.editor .. " keqing-shell"),
+	[B.mod("K", "s")] = B.exec(V.editor .. " keqing-dots"),
+	[B.mod("S", "s")] = B.exec(V.screenshot),
+	[B.mod("T")] = B.exec(V.terminal),
+})
+
+-- Window operations
 B.map_keybinds({ repeating = true }, {
-	["SUPER + B"] = B.exec(V.browser),
-	["SUPER + C"] = B.exec(V.editor),
-	["SUPER + E"] = B.exec(V.filemanager),
-	["SUPER + T"] = B.exec(V.terminal),
-	["SUPER + W"] = hl.dsp.window.close(),
-	["SUPER + SHIFT + B"] = B.exec(V.browser_private),
+	[B.mod("down")] = hl.dsp.focus({ direction = "d" }),
+	[B.mod("down", "s")] = function() T.adaptive_move("d") end,
+	[B.mod("left")] = hl.dsp.focus({ direction = "l" }),
+	[B.mod("left", "s")] = function() T.adaptive_move("l") end,
+	[B.mod("right")] = hl.dsp.focus({ direction = "r" }),
+	[B.mod("right", "s")] = function() T.adaptive_move("r") end,
+	[B.mod("up")] = hl.dsp.focus({ direction = "u" }),
+	[B.mod("up", "s")] = function() T.adaptive_move("u") end,
+	[B.mod("W")] = hl.dsp.window.close(),
 })
 
-B.map_keybinds({ repeating = true }, {
-	["SUPER + up"] = hl.dsp.focus({ direction = "u" }),
-	["SUPER + down"] = hl.dsp.focus({ direction = "d" }),
-	["SUPER + left"] = hl.dsp.focus({ direction = "l" }),
-	["SUPER + right"] = hl.dsp.focus({ direction = "r" }),
-	["SUPER + SHIFT + up"] = function() T.adaptive_move("u") end,
-	["SUPER + SHIFT + down"] = function() T.adaptive_move("d") end,
-	["SUPER + SHIFT + left"] = function() T.adaptive_move("l") end,
-	["SUPER + SHIFT + right"] = function() T.adaptive_move("r") end,
-})
-
+-- Workspace operations
 for i = 1, V.wpm do
 	local k = i % V.wpm
-	hl.bind("SUPER + " .. k, function() T.fw(i) end)
-	hl.bind("SUPER + CTRL + " .. k, function() T.sw(i) end)
-	hl.bind("SUPER + SHIFT + " .. k, function() T.mw(i) end)
+	hl.bind(B.mod(k), function() T.fw(i) end)
+	hl.bind(B.mod(k, "c"), function() T.sw(i) end)
+	hl.bind(B.mod(k, "s"), function() T.mw(i) end)
 end
 
+-- Media
 B.map_keybinds({ locked = true, repeating = true }, {
-	["XF86AudioRaiseVolume"] = B.exec("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+"),
 	["XF86AudioLowerVolume"] = B.exec("wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"),
 	["XF86AudioMicMute"] = B.exec("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
 	["XF86AudioMute"] = B.exec("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+	["XF86AudioRaiseVolume"] = B.exec("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 1%+"),
 	["XF86MonBrightnessDown"] = B.exec("brightnessctl -e4 -n2 set 1%-"),
 	["XF86MonBrightnessUp"] = B.exec("brightnessctl -e4 -n2 set 1%+"),
 })
 
+-- Mouse
 B.map_keybinds({ mouse = true }, {
-	["SUPER + mouse:272"] = hl.dsp.window.drag(),
-	["SUPER + mouse:273"] = hl.dsp.window.resize(),
+	[B.mod("mouse:272")] = hl.dsp.window.drag(),
+	[B.mod("mouse:273")] = hl.dsp.window.resize(),
 })
 
 B.auto_start({

@@ -71,21 +71,21 @@ function Scrollumns.register(max_cols)
 	end
 
 	for key, dir in pairs({ down = "d", left = "l", right = "r", up = "u" }) do
-		hl.unbind("SUPER + SHIFT + " .. key)
-		hl.bind("SUPER + SHIFT + " .. key, function() T.adaptive_move(dir) end, { repeating = true })
+		hl.unbind(B.mod(key, "s"))
+		hl.bind(B.mod(key, "s"), function() T.adaptive_move(dir) end, { repeating = true })
 	end
 
-	hl.unbind("SUPER + F")
-	hl.bind("SUPER + F", toggle_monocle_or_maximize)
+	hl.unbind(B.mod("F"))
+	hl.bind(B.mod("F"), toggle_monocle_or_maximize)
 
 	B.map_keybinds({ repeating = true }, {
 		-- Column count
-		["SUPER + equal"] = function() bump(1) end,
-		["SUPER + minus"] = function() bump(-1) end,
+		[B.mod("equal")] = function() bump(1) end,
+		[B.mod("minus")] = function() bump(-1) end,
 
 		-- Layout toggles
-		["SUPER + SHIFT + equal"] = toggle_strict,
-		["SUPER + SHIFT + minus"] = reset,
+		[B.mod("equal", "s")] = toggle_strict,
+		[B.mod("minus", "s")] = reset,
 	})
 
 	hl.layout.register("scrollumns", {
