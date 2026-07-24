@@ -11,7 +11,6 @@ B.map_env({
 	-- Core
 	KEQING_DOTS_ROOT = V.root,
 	WORKSPACES_PER_MONITOR = V.wpm,
-	AQ_NO_ATOMIC = "1", -- workaround for 0.56.0 atomic-commit SIGSEGV on NVIDIA (releaseStashedCommit crash)
 
 	-- Cursor themes
 	HYPRCURSOR_THEME = "Keqing",
@@ -156,9 +155,10 @@ B.map_keybinds(nil, {
 	[B.mod("C", "s")] = B.exec(V.control),
 	[B.mod("I")] = B.exec(V.settings),
 	[B.mod("L")] = B.exec(V.lock),
+	[B.mod("M")] = B.exec(V.matrix),
 	[B.mod("Q")] = B.exec(V.logout),
-	[B.mod("TAB")] = B.exec(V.overview),
 	[B.mod("V", "s")] = B.exec(V.visualizer),
+	[B.mod("TAB")] = B.exec(V.overview),
 	["SHIFT + SPACE"] = B.exec(V.launcher),
 })
 
